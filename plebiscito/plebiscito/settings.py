@@ -40,8 +40,8 @@ DJANGO_APPS = [
 ]
 
 LOCAL_APPS = [
-    #"poll",
-    "poll.app.PollConfig"
+    "poll",
+    #"poll.app.PollConfig",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
