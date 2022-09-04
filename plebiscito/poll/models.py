@@ -6,16 +6,16 @@ from django.utils import timezone
 class Poll(models.Model):
     name = models.CharField(max_length=200)
     votes = models.IntegerField(default=0)
-    publication_date = models.DateTimeField("date published", default=timezone.now())
+    publication_date = models.DateTimeField(default=timezone.now())
 
     def is_recently_published(self):
-        return self.publication_date + dt.timedelta(days=1) > dt.datetime.now()
+        return self.publication_date + dt.timedelta(days=1) > timezone.now()
 
     def __str__(self):
         return f"Name: {self.name}, Total Votes: {self.votes}"
 
     def __repr__(self):
-        return f"ID: {self.id}\nName: {self.name}, Total Votes: {self.votes}"
+        return f"ID: {self.id} Name: {self.name}, Total Votes: {self.votes}"
 
 
 class Question(models.Model):
@@ -24,7 +24,7 @@ class Question(models.Model):
 
 
     def __str__(self):
-        return f"Q: {self.question_text}, Poll ID: {self.poll}"
+        return f"Q: {self.question_text}"
 
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
@@ -32,4 +32,4 @@ class Choice(models.Model):
     votes = models.IntegerField(default=0)
 
     def __str__(self):
-        return f"Text: {self.choice_text}, Votes: {self.votes}, Q ID: {self.question}"
+        return f"Text: {self.choice_text}, Votes: {self.votes}"
