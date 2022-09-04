@@ -12,7 +12,7 @@ class Poll(models.Model):
         return f"Name: {self.name}, Total Votes: {self.votes}"
 
     def __repr__(self):
-        return f"Name: {self.name}, Total Votes: {self.votes}"
+        return f"ID: {self.id}\nName: {self.name}, Total Votes: {self.votes}"
 
 
 class Question(models.Model):
