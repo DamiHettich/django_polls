@@ -1,0 +1,22 @@
+<h1> Poll Details:{{ poll.name}}</h1>
+
+{%if question_list.count > 0 %}
+    {%for question in question_list %}
+        <ol> 
+            <li>Q:{{question.question_text}}</li>
+            {% for choice in question.choice_set.all %}
+                {% if choice.question == question %}
+                    <ul>
+                        <li> {{choice.choice_text}} </li>
+                    </ul>
+                {%else%}
+                    No choices for this question
+                {%endif%}
+            {%endfor%}
+        </ol>
+    {%endfor%}
+{% else %}
+
+    <h2> No questions available in this poll </h2>
+
+{% endif %}
